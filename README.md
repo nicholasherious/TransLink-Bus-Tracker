@@ -4,4 +4,4 @@ Much better bus tracker than the last version using Material-UI and TransLink Pu
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/68cad002-778e-41eb-a745-1eea695d6cbd/deploy-status)](https://app.netlify.com/sites/translink/deploys)
 
-Demo: https://objective-dubinsky-642e66.netlify.app/
+Demo: https://translink.netlify.app/
