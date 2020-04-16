@@ -13,6 +13,13 @@ function SearchForm({ searchHandler }) {
     setValue('');
   };
 
+  const handleKeyPress = (e) =>{
+    if (e.key === "Enter") {
+      searchHandler(value)
+      setValue('')
+    }
+  }
+
   const handleChange = e => {
     setValue(e.target.value);
   };
@@ -22,6 +29,7 @@ function SearchForm({ searchHandler }) {
       <Box p={1}>
           
         <TextField
+          onKeyPress={handleKeyPress}
           type="text"
           onChange={handleChange}
           value={value}
