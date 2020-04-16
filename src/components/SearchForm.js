@@ -3,9 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import SearchIcon from '@material-ui/icons/Search';
-import Typography from '@material-ui/core/Typography';
 
-function SearchForm({ searchHandler, search }) {
+function SearchForm({ searchHandler }) {
   const [value, setValue] = useState('');
 
   const onSearchHandler = e => {
@@ -43,9 +42,7 @@ function SearchForm({ searchHandler, search }) {
         </IconButton>
       </Box>
       <Box p={1}>
-      <Typography variant="h3" component="h5" gutterBottom>
-        #{search}
-      </Typography>
+      
       </Box>
     </Box>
   );

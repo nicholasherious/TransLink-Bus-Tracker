@@ -56,7 +56,7 @@ function App() {
   return (
     <Grid container direction="column" spacing={0}>
       <Grid item xs={12}>
-        <Navbar />
+        <Navbar search={search} />
       </Grid>
       <Grid item container>
         <Grid item xs={2} sm={2} />
