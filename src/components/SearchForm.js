@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
-import Box from '@material-ui/core/Box';
 import SearchIcon from '@material-ui/icons/Search';
-import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import DirectionsIcon from '@material-ui/icons/Directions';
 import MenuIcon from '@material-ui/icons/Menu';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     padding: '10px 4px',
     display: 'flex',
     alignItems: 'center',
+    margin: '15px',
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -57,12 +54,15 @@ function SearchForm({ searchHandler }) {
         inputProps={{ 'aria-label': 'search google maps' }}
       />
       <Divider className={classes.divider} orientation="vertical" />
-      <IconButton type="submit" onClick={onSearchHandler} className={classes.iconButton} aria-label="search">
+      <IconButton
+        type="submit"
+        onClick={onSearchHandler}
+        className={classes.iconButton}
+        aria-label="search"
+      >
         <SearchIcon />
       </IconButton>
-   
     </Paper>
-  
   );
 }
 

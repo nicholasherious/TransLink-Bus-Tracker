@@ -6,17 +6,16 @@ import Grid from '@material-ui/core/Grid';
 import Navbar from './components/Navbar';
 import Error from './components/Error';
 import Loading from './components/Loading';
-import Example from './components/Example'
-import BusAlert from './components/BusAlert'
-import Box from '@material-ui/core/Box';
+import Example from './components/Example';
+import BusAlert from './components/BusAlert';
 
 function App() {
   const [busResults, setBusResults] = useState([]);
   const [search, setSearch] = useState('');
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false)
-  const [example, setExample] = useState(false)
-  const [alert, setAlert] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [example, setExample] = useState(false);
+  const [alert, setAlert] = useState(false);
   // const [loading, setLoading] = useState(false);
 
   const searchHandler = value => {
@@ -35,7 +34,7 @@ function App() {
         const response = await axios.get(busAPI, { axiosHeaders });
         setBusResults(response.data);
         if (response.data.length === 0) {
-          setAlert(true)
+          setAlert(true);
         }
       } catch (error) {
         // console.log(error);
@@ -47,14 +46,12 @@ function App() {
     };
     if (search === '') {
       console.log('not searching');
-      setExample(true)
-
+      setExample(true);
     } else {
-      setAlert(false)
+      setAlert(false);
       setError(false);
       setExample(false);
       fetchData();
-      
     }
   }, [search]);
 
@@ -62,9 +59,8 @@ function App() {
   // console.log(alert)
 
   return (
-    
-    <Grid container direction="column" spacing={2}>
-      <Grid item xs={12}>
+    <Grid container direction="column" spacing={0}>
+      <Grid item>
         <Navbar search={search} />
       </Grid>
       <Grid item container>
@@ -76,11 +72,10 @@ function App() {
       <Grid item container>
         <Grid item xs={2} sm={2} />
         <Grid item xs={12} sm={8}>
-        {example ? <Example /> : null }
+          {example ? <Example /> : null}
           {error ? <Error /> : <Results busResults={busResults} />}
-          {loading ? <Loading /> : null }
-          {alert ? <BusAlert /> : null }
-          
+          {loading ? <Loading /> : null}
+          {alert ? <BusAlert /> : null}
         </Grid>
       </Grid>
     </Grid>
