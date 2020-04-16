@@ -6,12 +6,14 @@ import Grid from '@material-ui/core/Grid';
 import Navbar from './components/Navbar';
 import Error from './components/Error';
 import Loading from './components/Loading';
+import Example from './components/Example'
 
 function App() {
   const [busResults, setBusResults] = useState([]);
   const [search, setSearch] = useState('');
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false)
+  const [example, setExample] = useState(false)
   // const [loading, setLoading] = useState(false);
 
   const searchHandler = value => {
@@ -39,8 +41,11 @@ function App() {
     };
     if (search === '') {
       console.log('not searching');
+      setExample(true)
+
     } else {
       setError(false);
+      setExample(false);
       fetchData();
       
     }
@@ -62,8 +67,10 @@ function App() {
       <Grid item container>
         <Grid item xs={2} sm={2} />
         <Grid item xs={12} sm={8}>
+        {example ? <Example /> : null }
           {error ? <Error /> : <Results busResults={busResults} />}
           {loading ? <Loading /> : null }
+          
         </Grid>
       </Grid>
     </Grid>
