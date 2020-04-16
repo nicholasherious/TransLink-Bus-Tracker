@@ -8,6 +8,7 @@ import Error from './components/Error';
 import Loading from './components/Loading';
 import Example from './components/Example'
 import BusAlert from './components/BusAlert'
+import Box from '@material-ui/core/Box';
 
 function App() {
   const [busResults, setBusResults] = useState([]);
@@ -61,7 +62,8 @@ function App() {
   // console.log(alert)
 
   return (
-    <Grid container direction="column" spacing={0}>
+    
+    <Grid container direction="column" spacing={2}>
       <Grid item xs={12}>
         <Navbar search={search} />
       </Grid>

@@ -3,8 +3,35 @@ import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import SearchIcon from '@material-ui/icons/Search';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import DirectionsIcon from '@material-ui/icons/Directions';
+import MenuIcon from '@material-ui/icons/Menu';
+import InputBase from '@material-ui/core/InputBase';
+import Divider from '@material-ui/core/Divider';
+import Paper from '@material-ui/core/Paper';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: '10px 4px',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
+  },
+  iconButton: {
+    padding: 10,
+  },
+  divider: {
+    height: 28,
+    margin: 4,
+  },
+}));
 
 function SearchForm({ searchHandler }) {
+  const classes = useStyles();
   const [value, setValue] = useState('');
 
   const onSearchHandler = e => {
@@ -13,46 +40,29 @@ function SearchForm({ searchHandler }) {
     setValue('');
   };
 
-  const handleKeyPress = (e) =>{
-    if (e.key === "Enter") {
-      searchHandler(value)
-      setValue('')
-    }
-  }
-
   const handleChange = e => {
     setValue(e.target.value);
   };
 
   return (
-    <Box display="flex" flexDirection="row" justifyContent="center" p={1} m={1}>
-      <Box p={1}>
-          
-        <TextField
-          onKeyPress={handleKeyPress}
-          type="text"
-          onChange={handleChange}
-          value={value}
-          label="Stop Number"
-          variant="outlined"
-          autoFocus={true}
-          fullWidth
-        />
-      </Box>
-      <Box p={1}>
-        <IconButton
-          type="submit"
-          variant="contained"
-          color="primary"
-          onClick={onSearchHandler}
-        >
-          <SearchIcon fontSize="large" />
-        </IconButton>
-      </Box>
-      <Box p={1}>
-      
-      </Box>
-    </Box>
+    <Paper component="form" className={classes.root}>
+      <IconButton className={classes.iconButton} aria-label="menu">
+        <MenuIcon />
+      </IconButton>
+      <InputBase
+        className={classes.input}
+        onChange={handleChange}
+        value={value}
+        placeholder="Stop Number"
+        inputProps={{ 'aria-label': 'search google maps' }}
+      />
+      <Divider className={classes.divider} orientation="vertical" />
+      <IconButton type="submit" onClick={onSearchHandler} className={classes.iconButton} aria-label="search">
+        <SearchIcon />
+      </IconButton>
+   
+    </Paper>
+  
   );
 }
 
