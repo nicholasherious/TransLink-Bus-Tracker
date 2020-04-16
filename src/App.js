@@ -59,19 +59,19 @@ function App() {
   // console.log(alert)
 
   return (
-    <Grid container direction="column" spacing={0}>
+    <Grid container direction="column">
       <Grid item>
         <Navbar search={search} />
       </Grid>
       <Grid item container>
-        <Grid item xs={2} sm={2} />
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={1} sm={2} />
+        <Grid item xs={10} sm={8}>
           <SearchForm searchHandler={searchHandler} search={search} />
         </Grid>
       </Grid>
       <Grid item container>
-        <Grid item xs={2} sm={2} />
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={1} sm={2} />
+        <Grid item xs={10} sm={8}>
           {example ? <Example /> : null}
           {error ? <Error /> : <Results busResults={busResults} />}
           {loading ? <Loading /> : null}
