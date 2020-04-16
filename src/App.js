@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Error from './components/Error';
 import Loading from './components/Loading';
 import Example from './components/Example'
+import BusAlert from './components/BusAlert'
 
 function App() {
   const [busResults, setBusResults] = useState([]);
@@ -14,6 +15,7 @@ function App() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false)
   const [example, setExample] = useState(false)
+  const [alert, setAlert] = useState(false)
   // const [loading, setLoading] = useState(false);
 
   const searchHandler = value => {
@@ -31,6 +33,9 @@ function App() {
         setLoading(true);
         const response = await axios.get(busAPI, { axiosHeaders });
         setBusResults(response.data);
+        if (response.data.length === 0) {
+          setAlert(true)
+        }
       } catch (error) {
         // console.log(error);
         setError(true);
@@ -44,6 +49,7 @@ function App() {
       setExample(true)
 
     } else {
+      setAlert(false)
       setError(false);
       setExample(false);
       fetchData();
@@ -52,6 +58,7 @@ function App() {
   }, [search]);
 
   // console.log(busResults);
+  // console.log(alert)
 
   return (
     <Grid container direction="column" spacing={0}>
@@ -70,6 +77,7 @@ function App() {
         {example ? <Example /> : null }
           {error ? <Error /> : <Results busResults={busResults} />}
           {loading ? <Loading /> : null }
+          {alert ? <BusAlert /> : null }
           
         </Grid>
       </Grid>
